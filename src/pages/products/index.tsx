@@ -4,6 +4,7 @@ import {GetAllProducts, getAllProducts} from '../../services'
 import {useFetch} from '../../hooks'
 import {Wrapper} from '../../components'
 import {ToUpperFirst} from '../../utils'
+import moment from 'moment'
 
 const Index = () => {
 	const {fetchData, data, loading} =
@@ -57,6 +58,12 @@ const Index = () => {
 										>
 											Profit
 										</th>
+										<th
+											scope="col"
+											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+										>
+											Created At
+										</th>
 										<th scope="col" className="relative px-6 py-3">
 											<span className="sr-only">Edit</span>
 										</th>
@@ -99,6 +106,11 @@ const Index = () => {
 											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 												{item?.price?.selling.min.toFixed(2)}$ -{' '}
 												{item?.price?.selling.max.toFixed(2)}$
+											</td>
+											<td className="px-6 py-4 whitespace-nowrap">
+												<div className="text-sm text-gray-900">
+													{moment(item?.createdAt).format('DD/MM/YY hh:mm')}
+												</div>
 											</td>
 											<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 												<Link
