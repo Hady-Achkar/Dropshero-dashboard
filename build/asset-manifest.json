@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.68d2d64f.css",
-    "main.js": "/static/js/main.f4633911.js",
+    "main.css": "/static/css/main.525c784e.css",
+    "main.js": "/static/js/main.12963d21.js",
     "static/media/logo.png": "/static/media/logo.06ce424e5b56415ae8ad.png",
     "static/media/facebook.png": "/static/media/facebook.4ae1fe6fcf276ab30f01.png",
     "static/media/american-express-svgrepo-com.svg": "/static/media/american-express-svgrepo-com.f094ecf9a252fe0c243b9de2fdbdcd49.svg",
     "static/media/master.svg": "/static/media/master.b39bbc2de112a4f90763bd31355d5d1a.svg",
     "index.html": "/index.html",
-    "main.68d2d64f.css.map": "/static/css/main.68d2d64f.css.map",
-    "main.f4633911.js.map": "/static/js/main.f4633911.js.map"
+    "main.525c784e.css.map": "/static/css/main.525c784e.css.map",
+    "main.12963d21.js.map": "/static/js/main.12963d21.js.map"
   },
   "entrypoints": [
-    "static/css/main.68d2d64f.css",
-    "static/js/main.f4633911.js"
+    "static/css/main.525c784e.css",
+    "static/js/main.12963d21.js"
   ]
 }
