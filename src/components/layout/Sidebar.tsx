@@ -5,6 +5,7 @@ import {
 	HomeIcon,
 	MenuIcon,
 	PlusIcon,
+	StarIcon,
 	UserAddIcon,
 	UsersIcon,
 	XIcon,
@@ -37,6 +38,12 @@ const Sidebar: React.FC<IProps> = (props) => {
 			{name: 'Users', to: '/users', icon: UsersIcon, current: false},
 			{name: 'Products', to: '/products', icon: CubeIcon, current: false},
 			{name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false},
+			{
+				name: 'Influencers',
+				to: '/influencers',
+				icon: StarIcon,
+				current: false,
+			},
 			{
 				name: 'Add Subscriber',
 				to: '/add-user',
