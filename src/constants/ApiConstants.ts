@@ -40,6 +40,10 @@ const ApiConstants = {
 		EDIT_ADMIN: '/admin',
 		DELETE_ADMIN: '/admin',
 		GET_STATISTICS: '/statistics',
+		GET_ALL_INFLUENCERS: '/influencers',
+		ADD_INFLUENCER: '/influencer',
+		DELETE_INFLUENCER: '/influencer',
+		UPDATE_INFLUENCER: '/influencer',
 	},
 }
 export default ApiConstants

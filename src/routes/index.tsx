@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch} from 'react-router-dom'
 import {
 	AddAdminPage,
+	AddInfluencer,
 	AddNewUser,
 	AddProductPage,
 	AllAdminsPage,
@@ -9,6 +10,7 @@ import {
 	EditProductPage,
 	EditUserPage,
 	Homepage,
+	InfluencersPage,
 	ProductsPage,
 	ProfilePage,
 	SecurityPage,
@@ -154,7 +156,25 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		component: AddNewUser,
 		full: true,
 		tabIndex: 100,
-		title: 'Edit user',
+		title: 'Add user',
+	},
+	{
+		path: '/influencers',
+		exact: true,
+		isPrivate: false,
+		component: InfluencersPage,
+		full: true,
+		tabIndex: 100,
+		title: 'Influencers',
+	},
+	{
+		path: '/add-influencer',
+		exact: true,
+		isPrivate: false,
+		component: AddInfluencer,
+		full: true,
+		tabIndex: 100,
+		title: 'Add new Influencer',
 	},
 ]
 
