@@ -41,6 +41,7 @@ const ApiConstants = {
 		DELETE_ADMIN: '/admin',
 		GET_STATISTICS: '/statistics',
 		GET_ALL_INFLUENCERS: '/influencers',
+		GET_INFLUENCER_BY_ID: '/influencer',
 		ADD_INFLUENCER: '/influencer',
 		DELETE_INFLUENCER: '/influencer',
 		UPDATE_INFLUENCER: '/influencer',

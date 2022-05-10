@@ -9,8 +9,12 @@ export interface IAddInfluencer {
 	country: string
 	platform: string
 	category: string
-	followers: number
-	age: number
+	followers: string
+	language: string
+	youtube?: string
+	instagram?: string
+	tiktok?: string
+	snapchat?: string
 }
 
 export interface Response {

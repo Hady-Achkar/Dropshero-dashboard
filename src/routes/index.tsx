@@ -7,6 +7,7 @@ import {
 	AddProductPage,
 	AllAdminsPage,
 	EditAdminPage,
+	EditInfluncer,
 	EditProductPage,
 	EditUserPage,
 	Homepage,
@@ -175,6 +176,15 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		full: true,
 		tabIndex: 100,
 		title: 'Add new Influencer',
+	},
+	{
+		path: '/edit-influencer/:influencerId',
+		exact: true,
+		isPrivate: false,
+		component: EditInfluncer,
+		full: true,
+		tabIndex: 100,
+		title: 'Edit Influencer',
 	},
 ]
 

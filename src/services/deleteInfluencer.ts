@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios'
 import {ApiConstants} from '../constants'
 import {AdminAxios} from '../lib'
 
-export interface IInfluencer {
+interface IInfluencerData {
 	_id?: string
 	channelName: string
 	description: string
@@ -13,21 +13,26 @@ export interface IInfluencer {
 	followers: string
 	youtube?: string
 	instagram?: string
-	language: string
-	createdAt?: Date
-	updatedAt?: Date
+	language?: string
 	snapchat?: string
 	tiktok?: string
 }
 
-export interface RootObject {
+interface RootObject {
+	status: string
 	message: string
-	influencers: IInfluencer[]
+	influencerId: string
+	requestTime: Date
 }
 
-export const getAllInfluencers = (): Promise<AxiosResponse<RootObject>> => {
+export const deleteInfluencer = (
+	influencerId: string
+): Promise<AxiosResponse> => {
 	return AdminAxios({
-		method: 'GET',
-		url: ApiConstants.ADMIN.GET_ALL_INFLUENCERS,
+		method: 'DELETE',
+		url: ApiConstants.ADMIN.DELETE_INFLUENCER,
+		params: {
+			influencerId: influencerId,
+		},
 	})
 }

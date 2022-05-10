@@ -21,7 +21,7 @@ const AddInfluencer = () => {
 				history.push('/influencers')
 			})
 			.catch((err) => {
-				setError(err?.message)
+				setError(err?.response?.message)
 				setShowError(true)
 			})
 	}
@@ -33,8 +33,8 @@ const AddInfluencer = () => {
 		country: '',
 		platform: '',
 		category: '',
-		followers: 0,
-		age: 0,
+		followers: '',
+		language: '',
 	}
 
 	const [influencerData, setInfluencerData] = useState<IInfluencer>(initState)
@@ -54,13 +54,23 @@ const AddInfluencer = () => {
 	)
 
 	const isDisabled =
-		influencerData.age === 0 ||
+		influencerData.language === '' ||
 		influencerData.channelName === '' ||
 		influencerData.category === '' ||
 		influencerData.description === '' ||
-		influencerData.followers === 0 ||
+		influencerData.followers === '' ||
 		influencerData.image === '' ||
 		influencerData.platform === ''
+
+	const followersOptions = [
+		'0-1K',
+		'1K-10K',
+		'10K-50K',
+		'50K-200K',
+		'200K-500K',
+		'500K-999K',
+		'<1M',
+	]
 
 	return (
 		<div className=" sm:px-6 lg:px-0 lg:col-span-9">
@@ -90,35 +100,53 @@ const AddInfluencer = () => {
 							</div>
 							<div className="col-span-2">
 								<label
-									htmlFor="age"
+									htmlFor="language"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Age
+									Language
 								</label>
-								<div className="mt-1">
-									<input
-										id="age"
-										onChange={handleChange}
-										type="number"
-										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
-									/>
-								</div>
+								<select
+									id="language"
+									onChange={handleChange}
+									className="block w-full space-y-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+								>
+									<option selected disabled hidden>
+										Select a language
+									</option>
+									<option className="px-2 py-1" value={'arabic'}>
+										Arabic
+									</option>
+									<option className="px-2 py-1" value={'english'}>
+										English
+									</option>
+									<option className="px-2 py-1" value={'german'}>
+										German
+									</option>
+								</select>
 							</div>
 							<div className="col-span-2">
 								<label
 									htmlFor="fname"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Number of followers (in Thousands)
+									Number of followers
 								</label>
-								<div className="mt-1">
-									<input
-										type="number"
-										onChange={handleChange}
-										id="followers"
-										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
-									/>
-								</div>
+								<select
+									id="followers"
+									onChange={handleChange}
+									className="block w-full space-y-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+								>
+									<option selected disabled hidden>
+										Select a range
+									</option>
+									{followersOptions.map((item, index) => {
+										return (
+											<option className="px-2 py-1" key={index} value={item}>
+												{item}
+											</option>
+										)
+									})}
+								</select>
 							</div>
 							<div className="col-span-2">
 								<label
@@ -153,7 +181,7 @@ const AddInfluencer = () => {
 									htmlFor="platform"
 									className="block text-sm font-medium text-gray-700"
 								>
-									Platform
+									Main Platform
 								</label>
 								<select
 									id="platform"
@@ -199,6 +227,67 @@ const AddInfluencer = () => {
 										)
 									})}
 								</select>
+							</div>
+							<div className="col-span-2" />
+							<div className="col-span-2">
+								<label
+									htmlFor="youtube"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Youtube channel
+								</label>
+								<div className="mt-1">
+									<input
+										onChange={handleChange}
+										id="youtube"
+										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+									/>
+								</div>
+							</div>
+							<div className="col-span-2">
+								<label
+									htmlFor="instagram"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Instagram channel
+								</label>
+								<div className="mt-1">
+									<input
+										onChange={handleChange}
+										id="instagram"
+										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+									/>
+								</div>
+							</div>
+							<div className="col-span-2">
+								<label
+									htmlFor="tiktok"
+									className="block text-sm font-medium text-gray-700"
+								>
+									TikTok channel
+								</label>
+								<div className="mt-1">
+									<input
+										onChange={handleChange}
+										id="tiktok"
+										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+									/>
+								</div>
+							</div>
+							<div className="col-span-2">
+								<label
+									htmlFor="snapchat"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Snapchat channel
+								</label>
+								<div className="mt-1">
+									<input
+										onChange={handleChange}
+										id="snapchat"
+										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+									/>
+								</div>
 							</div>
 							<div className="col-span-4">
 								<label
