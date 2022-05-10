@@ -1,12 +1,18 @@
 import moment from 'moment'
 import React, {useCallback, useEffect, useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import {ConfirmationModal, ErrorToast, SuccessToast} from '../../components'
 import {Socials} from '../../constants'
-import {getAllInfluencers, IInfluencer} from '../../services'
+import {deleteInfluencer, getAllInfluencers, IInfluencer} from '../../services'
 
 const Influencers = () => {
 	const [influencersData, setInfluencersData] = useState<IInfluencer[]>()
+	const [openConfirmation, setOpenConfirmation] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
+	const [showSuccess, setShowSuccess] = useState(false)
+
+	const [error, setError] = useState('')
+	const [showError, setShowError] = useState(false)
 	const fetchData = useCallback(() => {
 		setLoading(true)
 		getAllInfluencers()
@@ -24,6 +30,20 @@ const Influencers = () => {
 	}, [fetchData])
 
 	const history = useHistory()
+
+	const handleDelete = (influencerId: string | undefined) => {
+		if (influencerId) {
+			deleteInfluencer(influencerId)
+				.then((res) => {
+					setShowSuccess(true)
+					fetchData()
+				})
+				.catch((err) => {
+					setShowError(true)
+					setError(err?.response?.data?.message)
+				})
+		}
+	}
 
 	return (
 		<div>
@@ -57,7 +77,7 @@ const Influencers = () => {
 												scope="col"
 												className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
 											>
-												Platform
+												Main Platform
 											</th>
 											<th
 												scope="col"
@@ -81,13 +101,19 @@ const Influencers = () => {
 												scope="col"
 												className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
 											>
-												Created At
+												Language
 											</th>
 											<th
 												scope="col"
 												className="relative py-3.5 pl-3 pr-4 sm:pr-6"
 											>
 												<span className="sr-only">Edit</span>
+											</th>
+											<th
+												scope="col"
+												className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+											>
+												<span className="sr-only">Delete</span>
 											</th>
 										</tr>
 									</thead>
@@ -108,7 +134,9 @@ const Influencers = () => {
 																{item?.channelName}
 															</div>
 															<div className="text-gray-500">
-																{item?.channelName}
+																{moment(item?.createdAt).format(
+																	'DD/MM/YY hh:mm'
+																)}
 															</div>
 														</div>
 													</div>
@@ -118,26 +146,36 @@ const Influencers = () => {
 												</td>
 												<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
 													<span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-														{item?.followers}K
+														{item?.followers}
 													</span>
 												</td>
 												<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-													{item?.category}
+													{item?.category.toUpperCase()}
 												</td>
 												<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-													{item?.country}
+													{item?.country.toUpperCase()}
 												</td>
 												<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-													{moment(item?.createdAt).format('DD/MM/YY hh:mm')}
+													{item?.language.toUpperCase()}
 												</td>
 												<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-													<a
-														href="#"
+													<Link
+														to={`/edit-influencer/${item?._id}`}
 														className="text-indigo-600 hover:text-indigo-900"
 													>
 														Edit
-													</a>
+													</Link>
 												</td>
+												{item._id && (
+													<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+														<button
+															onClick={() => handleDelete(item._id)}
+															className="text-red-600 font-bold hover:text-red-900"
+														>
+															Delete
+														</button>
+													</td>
+												)}
 											</tr>
 										))}
 									</tbody>
@@ -147,6 +185,18 @@ const Influencers = () => {
 					</div>
 				</div>
 			</div>
+			<SuccessToast
+				show={showSuccess}
+				setShow={setShowSuccess}
+				title="Success!"
+				message={`Influencer was deleted successfully`}
+			/>
+			<ErrorToast
+				show={showError}
+				setShow={setShowError}
+				title="Error!"
+				message={error}
+			/>
 		</div>
 	)
 }

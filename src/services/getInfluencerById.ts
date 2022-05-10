@@ -2,7 +2,7 @@ import {AxiosResponse} from 'axios'
 import {ApiConstants} from '../constants'
 import {AdminAxios} from '../lib'
 
-export interface IInfluencer {
+interface IInfluencer {
 	_id?: string
 	channelName: string
 	description: string
@@ -20,14 +20,20 @@ export interface IInfluencer {
 	tiktok?: string
 }
 
-export interface RootObject {
+interface RootObject {
+	status: string
 	message: string
-	influencers: IInfluencer[]
+	influencer: IInfluencer
 }
 
-export const getAllInfluencers = (): Promise<AxiosResponse<RootObject>> => {
+export const getInfluencerById = (
+	influencerId: string
+): Promise<AxiosResponse<RootObject>> => {
 	return AdminAxios({
 		method: 'GET',
-		url: ApiConstants.ADMIN.GET_ALL_INFLUENCERS,
+		url: ApiConstants.ADMIN.GET_INFLUENCER_BY_ID,
+		params: {
+			influencerId: influencerId,
+		},
 	})
 }
