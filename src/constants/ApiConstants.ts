@@ -45,6 +45,9 @@ const ApiConstants = {
 		ADD_INFLUENCER: '/influencer',
 		DELETE_INFLUENCER: '/influencer',
 		UPDATE_INFLUENCER: '/influencer',
+		ADD_STORE: '/store',
+		EDIT_STORE: '/store',
+		DELETE_STORE: '/store',
 	},
 }
 export default ApiConstants
