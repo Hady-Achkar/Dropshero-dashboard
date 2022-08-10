@@ -6,7 +6,7 @@ import {Categories} from '../../data'
 import ReactPlayer from 'react-player'
 import {addNewProduct} from '../../services'
 import {useHistory} from 'react-router-dom'
-import {FireIcon} from '@heroicons/react/outline'
+import {ExternalLinkIcon, FireIcon} from '@heroicons/react/outline'
 import {ToUpperFirst} from '../../utils'
 
 const Index = () => {
@@ -336,15 +336,15 @@ const Index = () => {
 						{product?.marketingVideo.length > 0 &&
 							product?.marketingVideo.map((url, index) => {
 								return (
-									<div key={index} className="bg-slate-100 px-2">
-										<span
-											className="text-sm text-red-700 cursor-pointer hover:text-red-800"
-											onClick={() => handleDeleteVideo(url)}
-										>
-											x
-										</span>
-										<ReactPlayer height="200" width="100%" url={url} />
-									</div>
+									<a
+										className="flex items-center text-blue-600 p-4 hover:text-blue-800"
+										target={'_blank'}
+										rel="noreferrer"
+										href={url}
+									>
+										<ExternalLinkIcon className="h-5 w-5" />
+										Video {index + 1}
+									</a>
 								)
 							})}
 					</div>

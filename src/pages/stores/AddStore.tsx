@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import {ErrorToast, SuccessToast} from '../../components'
 import {addStore, GetStores} from '../../services'
 import {useHistory} from 'react-router-dom'
-import categories from '../../data/categories'
+import {Categories} from '../../data'
 
 const AddStore = () => {
 	const history = useHistory()
@@ -82,7 +82,7 @@ const AddStore = () => {
 									<option selected disabled hidden>
 										Select a category
 									</option>
-									{categories.map((item: any, index: number) => {
+									{Categories.map((item, index) => {
 										return (
 											<option
 												className="px-2 py-1"
@@ -107,6 +107,7 @@ const AddStore = () => {
 								<input
 									onChange={handleChange}
 									id="link"
+									placeholder="https://www.amazon.com"
 									className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
 								/>
 							</div>

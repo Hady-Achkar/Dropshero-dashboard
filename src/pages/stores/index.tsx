@@ -148,7 +148,7 @@ const Stores = () => {
 					show={showSuccess}
 					setShow={setShowSuccess}
 					title="Success!"
-					message={`Influencer was deleted successfully`}
+					message={`Store was deleted successfully`}
 				/>
 				<ErrorToast
 					show={showError}

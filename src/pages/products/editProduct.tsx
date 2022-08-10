@@ -444,7 +444,7 @@ const Index = () => {
 								<option selected disabled hidden>
 									Select a category
 								</option>
-								{Categories.map((category: any, index: number) => {
+								{Categories.map((category, index) => {
 									return (
 										<option
 											className="px-2 py-1"

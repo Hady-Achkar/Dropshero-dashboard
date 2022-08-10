@@ -6,6 +6,7 @@ import countries from '../../data/countries'
 import {platform} from '../../data/platforms'
 import {addNewInfluencer, IInfluencer} from '../../services'
 import {useHistory} from 'react-router-dom'
+import {influencersCategories} from '../../data/influencersCategories'
 
 const AddInfluencer = () => {
 	const history = useHistory()
@@ -163,7 +164,7 @@ const AddInfluencer = () => {
 									<option selected disabled hidden>
 										Select a category
 									</option>
-									{Categories.map((category, index) => {
+									{influencersCategories.map((category, index) => {
 										return (
 											<option
 												className="px-2 py-1"
