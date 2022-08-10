@@ -1,37 +1,62 @@
 const categories = [
 	{
 		value: 'beauty',
-		label: 'Beauty and skin care',
+		label: 'Beauty',
 		current: false,
 	},
 	{
 		value: 'home-applicances',
-		label: 'Home and office applicances',
+		label: 'Home Applicances',
 		current: false,
 	},
 	{
 		value: 'pets',
-		label: 'Pets products',
+		label: 'Pets Products',
 		current: false,
 	},
 	{
 		value: 'electronics',
-		label: 'Computer and electronics',
+		label: 'Electronices',
 		current: false,
 	},
 	{
 		value: 'garden',
-		label: 'Home and garden furniture',
+		label: 'Garden Furniture',
 		current: false,
 	},
 	{
 		value: 'kitchen',
-		label: 'Kitchen tools',
+		label: 'Kitchen',
+		current: false,
+	},
+	{
+		value: 'fashion',
+		label: 'Fashion',
+		current: false,
+	},
+	{
+		value: 'baby',
+		label: 'Baby Products',
+		current: false,
+	},
+	{
+		value: 'sport',
+		label: 'Sports',
+		current: false,
+	},
+	{
+		value: 'general',
+		label: 'General',
+		current: false,
+	},
+	{
+		value: 'tested',
+		label: 'Tested Products',
 		current: false,
 	},
 	{
 		value: 'trend',
-		label: 'Trendy Product',
+		label: 'Trend',
 		current: false,
 	},
 ]

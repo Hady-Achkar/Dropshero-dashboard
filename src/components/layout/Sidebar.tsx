@@ -45,6 +45,12 @@ const Sidebar: React.FC<IProps> = (props) => {
 				current: false,
 			},
 			{
+				name: 'Stores',
+				to: '/stores',
+				icon: HomeIcon,
+				current: false,
+			},
+			{
 				name: 'Add Subscriber',
 				to: '/add-user',
 				icon: UserAddIcon,
