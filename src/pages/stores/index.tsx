@@ -25,7 +25,9 @@ const Stores = () => {
 		deleteStore(storeId)
 			.then((_) => {
 				setShowSuccess(true)
-				getStores()
+				getStores().then((res) => {
+					setStores(res?.data.data)
+				})
 			})
 			.catch((err) => {
 				setShowError(true)
