@@ -1,5 +1,5 @@
-import React, {Fragment, useCallback, useEffect, useMemo, useState} from 'react'
-import {Dialog, Transition} from '@headlessui/react'
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
 import {
 	CubeIcon,
 	HomeIcon,
@@ -10,11 +10,11 @@ import {
 	UsersIcon,
 	XIcon,
 } from '@heroicons/react/outline'
-import {Link} from 'react-router-dom'
-import {logoutAction} from '../../actions'
-import {useDispatch, useSelector} from 'react-redux'
-import {Images} from '../../constants'
-import {AppState} from '../../reducers'
+import { Link } from 'react-router-dom'
+import { logoutAction } from '../../actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { Images } from '../../constants'
+import { AppState } from '../../reducers'
 
 function classNames(...classes: any) {
 	return classes.filter(Boolean).join(' ')
@@ -24,20 +24,20 @@ interface IProps {
 	children: React.ReactNode
 	full?: boolean
 	tabIndex: number
-	title: string
+	title: string,
 }
 
 const Sidebar: React.FC<IProps> = (props) => {
-	const {children, full, tabIndex, title} = props
-	const {fullName, image} = useSelector((state: AppState) => state.auth.user)
+	const { children, full, tabIndex, title } = props
+	const { fullName, image } = useSelector((state: AppState) => state.auth.user)
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const dispatch = useDispatch()
 	const initNavigation = useMemo(() => {
 		return [
-			{name: 'Dashboard', to: '/', icon: HomeIcon, current: true},
-			{name: 'Users', to: '/users', icon: UsersIcon, current: false},
-			{name: 'Products', to: '/products', icon: CubeIcon, current: false},
-			{name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false},
+			{ name: 'Dashboard', to: '/', icon: HomeIcon, current: true },
+			{ name: 'Users', to: '/users', icon: UsersIcon, current: false },
+			{ name: 'Products', to: '/products', icon: CubeIcon, current: false },
+			{ name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false },
 			{
 				name: 'Influencers',
 				to: '/influencers',
@@ -54,7 +54,7 @@ const Sidebar: React.FC<IProps> = (props) => {
 				name: 'Add Subscriber',
 				to: '/add-user',
 				icon: UserAddIcon,
-				current: false,
+				current: true,
 			},
 		]
 	}, [])

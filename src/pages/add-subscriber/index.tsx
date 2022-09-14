@@ -1,8 +1,10 @@
 import classNames from 'classnames'
-import React, {useCallback, useState} from 'react'
-import {useHistory} from 'react-router-dom'
-import {Wrapper} from '../../components'
-import {addNewUser} from '../../services'
+import React, { useCallback, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { Wrapper } from '../../components'
+import { addNewUser } from '../../services'
+import AddNewUserFromExcel from './excel'
+import FormExcel from './excel'
 
 const Index = () => {
 	const history = useHistory()
@@ -26,9 +28,9 @@ const Index = () => {
 	)
 	const isDisabled = Boolean(
 		userData?.fname === '' ||
-			userData?.lname === '' ||
-			userData?.email === '' ||
-			userData?.password === ''
+		userData?.lname === '' ||
+		userData?.email === '' ||
+		userData?.password === ''
 	)
 
 	const handleSubmit = useCallback(
@@ -51,7 +53,11 @@ const Index = () => {
 	)
 	return (
 		<Wrapper full loading={loading}>
-			<div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+
+			<div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9 relative">
+				<div className='modal-row absolute -top-16 -right-2'>
+					<AddNewUserFromExcel />
+				</div>
 				<form onSubmit={handleSubmit}>
 					<div className="shadow sm:rounded-md sm:overflow-hidden">
 						<div className="bg-white py-6 px-4 space-y-6 sm:p-6">
@@ -149,6 +155,7 @@ const Index = () => {
 						</div>
 					</div>
 				</form>
+				{/* <FormExcel /> */}
 			</div>
 		</Wrapper>
 	)

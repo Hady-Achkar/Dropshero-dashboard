@@ -90,7 +90,6 @@ const Index = () => {
 					stat: res.data.data.counts.subscribers.one_time,
 					icon: CalendarIcon,
 				}
-				console.log(res?.data?.data?.latestTransactions)
 				setStatistics({
 					counts: [
 						totalProducts,

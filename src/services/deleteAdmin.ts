@@ -1,4 +1,3 @@
-import {AxiosResponse} from 'axios'
 import {ApiConstants} from '../constants'
 import {AdminAxios} from '../lib'
 

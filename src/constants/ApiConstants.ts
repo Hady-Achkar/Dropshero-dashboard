@@ -1,6 +1,7 @@
 const ApiConstants = {
 	AUTH: {
-		BASE_URL: 'https://api.dropshero.com/admin',
+		// BASE_URL: 'https://api.dropshero.com/admin',
+		BASE_URL: 'http://10.10.77.20:4000/admin',
 		SIGNUP: '/sign-up',
 		SIGN_IN: '/sign-in',
 	},
@@ -23,12 +24,18 @@ const ApiConstants = {
 		GET_SINGLE_BUNDLE: '/bundle',
 	},
 	USERS: {
-		BASE_URL: 'https://api.dropshero.com/admin',
+		BASE_URL: 'http://10.10.77.20:4000/admin',
+		// BASE_URL: 'https://api.dropshero.com/admin',
 		GET_ALL: '/users',
 		GET_SINGLE: '/user',
 		EDIT_USER: '/user',
 		DELETE_USER: '/user',
 		ADD_NEW_USER: '/user',
+		ADD_NEW_USER_FROM_EXCEL: '/users',
+	},
+	USERS_FROM_EXCEL: {
+		BASE_URL: 'http://10.10.77.20:4000/admin',
+		ADD_NEW_USER_FROM_EXCEL: '/users',
 	},
 	ADMIN: {
 		BASE_URL: 'https://api.dropshero.com/admin',

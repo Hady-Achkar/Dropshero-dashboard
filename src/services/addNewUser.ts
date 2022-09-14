@@ -1,4 +1,4 @@
-import {UsersAxios} from '../lib'
+import {UsersAxios,UsersFromExcelAxios} from '../lib'
 import {ApiConstants} from '../constants'
 
 export interface IAddUser {
@@ -7,6 +7,9 @@ export interface IAddUser {
 	fname: string
 	lname: string
 }
+// export interface IAddUserFromExcel {
+// 	data: any
+// }
 
 export const addNewUser = (payload: IAddUser) => {
 	const {fname, lname, email, password} = payload
@@ -19,5 +22,16 @@ export const addNewUser = (payload: IAddUser) => {
 			email,
 			password,
 		},
+	})
+}
+
+
+export const addNewUsersFromExcel = (payload: any) => {
+	const formData = payload
+	return UsersFromExcelAxios({
+		method: 'POST',
+		url: ApiConstants.USERS_FROM_EXCEL.ADD_NEW_USER_FROM_EXCEL,
+		data: formData,
+		 headers: { "Content-Type": "multipart/form-data" },
 	})
 }

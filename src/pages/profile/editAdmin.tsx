@@ -117,7 +117,6 @@ const Index = () => {
         adminData.role === '' ||
         adminData.email === ''
     )
-    console.log(adminData)
     const handleTogglePasswordShown = useCallback(() => {
         setPasswordShown((prevState) => !prevState)
     }, [])
