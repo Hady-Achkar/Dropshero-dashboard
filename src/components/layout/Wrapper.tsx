@@ -1,5 +1,5 @@
 import React from 'react'
-import type {FC} from 'react'
+import type { FC } from 'react'
 import classNames from 'classnames'
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const Wrapper: FC<IProps> = (props) => {
-	const {full, children, loading, ar} = props
+	const { full, children, loading, ar } = props
 	if (loading) {
 		return (
 			<div

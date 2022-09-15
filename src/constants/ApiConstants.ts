@@ -29,6 +29,11 @@ const ApiConstants = {
 		EDIT_USER: '/user',
 		DELETE_USER: '/user',
 		ADD_NEW_USER: '/user',
+		ADD_NEW_USER_FROM_EXCEL: '/users',
+	},
+	USERS_FROM_EXCEL: {
+		BASE_URL: 'https://api.dropshero.com/admin',
+		ADD_NEW_USER_FROM_EXCEL: '/users',
 	},
 	ADMIN: {
 		BASE_URL: 'https://api.dropshero.com/admin',

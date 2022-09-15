@@ -1,16 +1,16 @@
 import classNames from 'classnames'
-import React, {Fragment, useCallback, useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import {ErrorToast, Wrapper} from '../../components'
-import {getSingleCustomer, GetCustomer, editCustomer} from '../../services'
-import {ToUpperFirst} from '../../utils'
+import React, { Fragment, useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { ErrorToast, Wrapper } from '../../components'
+import { getSingleCustomer, GetCustomer, editCustomer } from '../../services'
+import { ToUpperFirst } from '../../utils'
 
 type IParams = {
 	userId: string
 }
 
 const EditUser = () => {
-	const {userId} = useParams<IParams>()
+	const { userId } = useParams<IParams>()
 	const [error, setError] = useState<string>('')
 	const [errorShow, setErrorShow] = useState<boolean>(false)
 
@@ -25,7 +25,7 @@ const EditUser = () => {
 		getSingleCustomer(userId)
 			.then((res) => {
 				setLoading(true)
-				setUserData({...res.data.user, password: '', confirmPassword: ''})
+				setUserData({ ...res.data.user, password: '', confirmPassword: '' })
 				setLoading(false)
 			})
 			.catch((error) => {
@@ -40,7 +40,6 @@ const EditUser = () => {
 		return () => fetchUser()
 	}, [fetchUser])
 
-	console.log('user', userData)
 
 	const handleChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -87,12 +86,11 @@ const EditUser = () => {
 
 	const isDisabled = Boolean(
 		userData?.confirmPassword !== userData?.password ||
-			userData?.lname === '' ||
-			userData?.fname === '' ||
-			userData?.email === ''
+		userData?.lname === '' ||
+		userData?.fname === '' ||
+		userData?.email === ''
 	)
 
-	console.log(userData)
 
 	return (
 		<Wrapper full loading={loading}>

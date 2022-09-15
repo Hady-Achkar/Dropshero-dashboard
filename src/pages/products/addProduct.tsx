@@ -1,13 +1,13 @@
-import React, {useCallback, useState} from 'react'
-import {DraftEditor, ErrorToast, Uploader} from '../../components'
-import {Socials} from '../../constants'
-import {IAddProduct} from '../../types'
-import {Categories} from '../../data'
+import React, { useCallback, useState } from 'react'
+import { DraftEditor, ErrorToast, Uploader } from '../../components'
+import { Socials } from '../../constants'
+import { IAddProduct } from '../../types'
+import { Categories } from '../../data'
 import ReactPlayer from 'react-player'
-import {addNewProduct} from '../../services'
-import {useHistory} from 'react-router-dom'
-import {ExternalLinkIcon, FireIcon} from '@heroicons/react/outline'
-import {ToUpperFirst} from '../../utils'
+import { addNewProduct } from '../../services'
+import { useHistory } from 'react-router-dom'
+import { ExternalLinkIcon, FireIcon } from '@heroicons/react/outline'
+import { ToUpperFirst } from '../../utils'
 
 const Index = () => {
 	const history = useHistory()
@@ -207,7 +207,6 @@ const Index = () => {
 		}))
 	}
 
-	console.log(product.category)
 
 	return (
 		<div className="">
