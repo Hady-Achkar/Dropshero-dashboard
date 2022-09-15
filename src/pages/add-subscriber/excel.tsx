@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ToastContainer, toast, ToastContent, TypeOptions, ToastContentProps, ToastOptions } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useHistory } from 'react-router-dom';
@@ -12,7 +12,7 @@ const AddNewUserFromExcel = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const history = useHistory()
 
-    const formData = new FormData();
+    const formData = useMemo(()=> new FormData(), [])
     formData.append("excel", selectedFile);
 
     const handleSend = useCallback(
@@ -46,7 +46,7 @@ const AddNewUserFromExcel = () => {
             setIsFile(false)
 
         },
-        [formData, history]
+        [formData, history, isFile]
     )
 
     const handleFileSelect = (event: any) => {

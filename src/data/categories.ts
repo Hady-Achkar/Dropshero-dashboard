@@ -1,12 +1,17 @@
 const categories = [
 	{
 		value: 'beauty',
-		label: 'Beauty',
+		label: 'Beauty & Health',
+		current: false,
+	},
+	{
+		value: 'outdoors',
+		label: 'Outdoors',
 		current: false,
 	},
 	{
 		value: 'home-applicances',
-		label: 'Home Applicances',
+		label: 'Home Applicances & Decorations',
 		current: false,
 	},
 	{
@@ -31,7 +36,7 @@ const categories = [
 	},
 	{
 		value: 'fashion',
-		label: 'Fashion',
+		label: 'Fashion & Jewlery',
 		current: false,
 	},
 	{
@@ -47,11 +52,6 @@ const categories = [
 	{
 		value: 'general',
 		label: 'General',
-		current: false,
-	},
-	{
-		value: 'tested',
-		label: 'Tested Products',
 		current: false,
 	},
 	{
