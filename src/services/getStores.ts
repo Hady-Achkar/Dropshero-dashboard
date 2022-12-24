@@ -13,6 +13,7 @@ export declare namespace GetStores {
 		name: string
 		category: string
 		link: string
+		type: string
 		createdAt?: Date
 		updatedAt?: Date
 	}
