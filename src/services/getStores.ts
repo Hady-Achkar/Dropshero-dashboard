@@ -3,7 +3,7 @@ import axios, {AxiosResponse} from 'axios'
 export const getStores = (): Promise<AxiosResponse<GetStores.RootObject>> => {
 	return axios({
 		method: 'GET',
-		url: 'https://api.dropshero.com/stores',
+		url: 'https://api.easyecommerce.io/stores',
 	})
 }
 
