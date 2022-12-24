@@ -1,13 +1,13 @@
-import React, { useCallback, useState } from 'react'
-import { DraftEditor, ErrorToast, Uploader } from '../../components'
-import { Socials } from '../../constants'
-import { IAddProduct } from '../../types'
-import { Categories } from '../../data'
+import React, {useCallback, useState} from 'react'
+import {DraftEditor, ErrorToast, Uploader} from '../../components'
+import {Socials} from '../../constants'
+import {IAddProduct} from '../../types'
+import {Categories} from '../../data'
 import ReactPlayer from 'react-player'
-import { addNewProduct } from '../../services'
-import { useHistory } from 'react-router-dom'
-import { ExternalLinkIcon, FireIcon } from '@heroicons/react/outline'
-import { ToUpperFirst } from '../../utils'
+import {addNewProduct} from '../../services'
+import {useHistory} from 'react-router-dom'
+import {ExternalLinkIcon, FireIcon} from '@heroicons/react/outline'
+import {ToUpperFirst} from '../../utils'
 
 const Index = () => {
 	const history = useHistory()
@@ -207,7 +207,6 @@ const Index = () => {
 		}))
 	}
 
-
 	return (
 		<div className="">
 			<div className="h-full rounded shadow p-5 my-5 max-w-5xl  space-y-5 bg-white">
@@ -405,6 +404,9 @@ const Index = () => {
 						>
 							<option selected disabled hidden>
 								Select a category
+							</option>
+							<option className="px-2 py-1" value={'tested'}>
+								Tested Product
 							</option>
 							{Categories.map((category, index) => {
 								return (

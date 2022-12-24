@@ -6,6 +6,7 @@ type Payload = {
 	name: string
 	category: string
 	link: string
+	type: string
 }
 
 export const addStore = (payload: Payload): Promise<AxiosResponse> => {

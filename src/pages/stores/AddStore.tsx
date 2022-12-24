@@ -28,6 +28,7 @@ const AddStore = () => {
 		name: '',
 		category: '',
 		link: '',
+		type: 'amazon',
 	}
 
 	const [storeData, setStoreData] = useState<GetStores.Store>(initState)
@@ -64,6 +65,28 @@ const AddStore = () => {
 										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
 										placeholder="Amazon UK"
 									/>
+								</div>
+							</div>
+							<div className="col-span-2">
+								<label
+									htmlFor="name"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Type
+								</label>
+								<div className="mt-1">
+									<select
+										id="type"
+										onChange={handleChange}
+										className="block w-full space-y-3 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+									>
+										<option selected disabled hidden>
+											Select a type
+										</option>
+										<option value={'dropshipping'}>Dropshipping store</option>
+										<option value={'amazon'}>Amazon store</option>
+										<option value={'brand'}>Brand store</option>
+									</select>
 								</div>
 							</div>
 
