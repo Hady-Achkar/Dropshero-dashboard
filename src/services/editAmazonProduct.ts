@@ -1,10 +1,10 @@
 import {AxiosResponse} from 'axios'
 import {AmazonProductAxios} from '../lib'
 import {ApiConstants} from '../constants'
-import {IProduct} from '../types'
+import {AmazonProduct} from './getAmazonProducts'
 
 export const editAmazonProduct = (
-	payload: IProduct
+	payload: AmazonProduct
 ): Promise<AxiosResponse<any>> => {
 	const {_id, ...rest} = payload
 	return AmazonProductAxios({

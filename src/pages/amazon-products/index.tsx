@@ -5,6 +5,7 @@ import {useFetch} from '../../hooks'
 import {Wrapper} from '../../components'
 import {ToUpperFirst} from '../../utils'
 import moment from 'moment'
+import {archiveAmazonProduct} from '../../services/archiveAmazonProduct'
 
 const Index = () => {
 	const {fetchData, data, loading} = useFetch(getAllAmazonProducts)
@@ -12,6 +13,12 @@ const Index = () => {
 		fetchData()
 		return () => fetchData()
 	}, [fetchData])
+
+	const handleArchive = (id: string) => {
+		archiveAmazonProduct(id)
+			.then(() => fetchData())
+			.catch((err) => console.log(err))
+	}
 	return (
 		<Wrapper full loading={loading}>
 			<div className="flex flex-col">
@@ -79,48 +86,60 @@ const Index = () => {
 								</thead>
 								<tbody className="bg-white divide-y divide-gray-200">
 									{data?.products.map((item) => (
-										<tr key={item?._id}>
-											<td className="px-6 py-4 whitespace-nowrap">
-												<div className="text-sm text-gray-900">
-													{item?.title}
-												</div>
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap">
-												<div className="text-sm text-gray-900">
-													{ToUpperFirst(item?.category)}
-												</div>
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap">
-												<div className="text-sm text-gray-900">
-													{item.revenue}
-												</div>
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.selling.min.toFixed(2)}$ -{' '}
-												{item?.price?.selling.max.toFixed(2)}$
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.cost.min.toFixed(2)}$ -{' '}
-												{item?.price?.cost.max.toFixed(2)}$
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.selling.min.toFixed(2)}$ -{' '}
-												{item?.price?.selling.max.toFixed(2)}$
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap">
-												<div className="text-sm text-gray-900">
-													{moment(item?.createdAt).format('DD/MM/YY hh:mm')}
-												</div>
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-												<Link
-													to={`/edit-amazon-product/${item?._id}`}
-													className="text-indigo-600 hover:text-indigo-900"
-												>
-													View
-												</Link>
-											</td>
-										</tr>
+										<>
+											{item.isArchived ? null : (
+												<tr key={item?._id}>
+													<td className="px-6 py-4 whitespace-nowrap">
+														<div className="text-sm text-gray-900">
+															{item?.title}
+														</div>
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap">
+														<div className="text-sm text-gray-900">
+															{ToUpperFirst(item?.category)}
+														</div>
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap">
+														<div className="text-sm text-gray-900">
+															{item.revenue}
+														</div>
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+														{item?.price?.selling.min.toFixed(2)}$ -{' '}
+														{item?.price?.selling.max.toFixed(2)}$
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+														{item?.price?.cost.min.toFixed(2)}$ -{' '}
+														{item?.price?.cost.max.toFixed(2)}$
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+														{item?.price?.selling.min.toFixed(2)}$ -{' '}
+														{item?.price?.selling.max.toFixed(2)}$
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap">
+														<div className="text-sm text-gray-900">
+															{moment(item?.createdAt).format('DD/MM/YY hh:mm')}
+														</div>
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+														<Link
+															to={`/edit-amazon-product/${item?._id}`}
+															className="text-indigo-600 hover:text-indigo-900"
+														>
+															View
+														</Link>
+													</td>
+													<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+														<button
+															onClick={() => handleArchive(item._id ?? '')}
+															className="text-indigo-600 hover:text-indigo-900"
+														>
+															Delete
+														</button>
+													</td>
+												</tr>
+											)}
+										</>
 									))}
 								</tbody>
 							</table>
