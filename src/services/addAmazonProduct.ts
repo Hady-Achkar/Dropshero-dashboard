@@ -41,7 +41,6 @@ export interface IAddAmazonProduct {
 	revenue: number
 	price: Price
 	thumbnail: string
-	description: string
 	category: string
 	supplierLinks: string[]
 	competitorLinks: string

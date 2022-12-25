@@ -11,7 +11,6 @@ const Index = () => {
 	const initState: IAddAmazonProduct = {
 		title: '',
 		thumbnail: '',
-		description: '',
 		price: {
 			cost: {
 				min: 0,
@@ -119,13 +118,6 @@ const Index = () => {
 					console.log(err)
 				}
 			})
-	}
-
-	const handleChangeDescription = (content: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			description: content,
-		}))
 	}
 
 	const handleChangeCompetitorLinks = (content: string) => {
@@ -281,6 +273,23 @@ const Index = () => {
 					</div>
 				</div>
 
+				<div className="space-y-2">
+					<label
+						htmlFor="revenue"
+						className="block text-sm font-medium text-gray-700"
+					>
+						Monthly sales
+					</label>
+					<input
+						id="revenue"
+						min="0"
+						onChange={handleChange}
+						name="revenue"
+						type="text"
+						className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
+					/>
+				</div>
+
 				<div className="grid grid-cols-2 gap-3 mt-3 ">
 					<div className="space-y-2">
 						<label
@@ -350,47 +359,6 @@ const Index = () => {
 				</div>
 
 				<div className="space-y-2">
-					<legend className="text-base font-medium text-gray-900">
-						Product Marketing Platforms
-					</legend>
-					<fieldset className="grid grid-cols-3 gap-3">
-						{Socials.map((item, index) => {
-							return (
-								<div key={index} className="relative flex items-start">
-									<div className="flex items-center h-5">
-										<input
-											value={item.name}
-											type="checkbox"
-											id={item.name}
-											name="whereToSell"
-											onChange={handleChangeSellings}
-											className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded"
-										/>
-									</div>
-									<div className="ml-3 text-sm">
-										<span id="comments-description" className="text-gray-500">
-											<span className="sr-only">{item.name} </span>{' '}
-											<img
-												className="inline-flex"
-												height="24"
-												width="24"
-												src={item.src}
-												alt="icon"
-											/>
-										</span>
-										<label
-											htmlFor={item.name}
-											className="font-medium text-gray-700 ml-2"
-										>
-											{item.name}
-										</label>
-									</div>
-								</div>
-							)
-						})}
-					</fieldset>
-				</div>
-				<div className="space-y-2">
 					<label
 						htmlFor="competitorLinks"
 						className="block text-sm font-medium text-gray-700"
@@ -400,19 +368,6 @@ const Index = () => {
 					<DraftEditor
 						data={product.competitorLinks}
 						setData={handleChangeCompetitorLinks}
-					/>
-				</div>
-
-				<div className="space-y-2">
-					<label
-						htmlFor="description"
-						className="block text-sm font-medium text-gray-700"
-					>
-						Product description
-					</label>
-					<DraftEditor
-						data={product.description}
-						setData={handleChangeDescription}
 					/>
 				</div>
 

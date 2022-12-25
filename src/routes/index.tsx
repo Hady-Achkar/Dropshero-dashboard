@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch} from 'react-router-dom'
 import {
 	AddAdminPage,
+	AddAmazonProductPage,
 	AddInfluencer,
 	AddNewUser,
 	AddNewUserFromExcel,
@@ -93,6 +94,15 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		full: false,
 		tabIndex: 2,
 		title: 'Amazon Products',
+	},
+	{
+		path: '/add-amazon-product',
+		exact: true,
+		isPrivate: false,
+		component: AddAmazonProductPage,
+		full: false,
+		tabIndex: 2,
+		title: 'Add Amazon products',
 	},
 	{
 		path: '/amazon-product/:amazonProductId',
