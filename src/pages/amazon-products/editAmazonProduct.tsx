@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import {DraftEditor, ErrorToast, Uploader, Wrapper} from '../../components'
 import {Socials} from '../../constants'
 import {IProduct} from '../../types'
-import {Categories} from '../../data'
+import {amazonCategories, Categories} from '../../data'
 import ReactPlayer from 'react-player'
 import {
 	AmazonProduct,
@@ -38,7 +38,7 @@ const Index = () => {
 				max: 0,
 			},
 		},
-		category: Categories[0].value,
+		category: amazonCategories[0].value,
 		revenue: 0,
 		competitorLinks: '',
 		supplierLinks: [],
@@ -316,7 +316,7 @@ const Index = () => {
 								<option selected disabled hidden>
 									Select a category
 								</option>
-								{Categories.map((category, index) => {
+								{amazonCategories.map((category, index) => {
 									return (
 										<option
 											className="px-2 py-1"

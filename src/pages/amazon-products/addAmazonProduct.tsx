@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {DraftEditor, ErrorToast, Uploader} from '../../components'
 import {Socials} from '../../constants'
-import {Categories} from '../../data'
+import {amazonCategories, Categories} from '../../data'
 import {addAmazonProduct, IAddAmazonProduct} from '../../services'
 import {useHistory} from 'react-router-dom'
 import {ToUpperFirst} from '../../utils'
@@ -258,7 +258,7 @@ const Index = () => {
 							<option selected disabled hidden>
 								Select a category
 							</option>
-							{Categories.map((category, index) => {
+							{amazonCategories.map((category, index) => {
 								return (
 									<option
 										className="px-2 py-1"
