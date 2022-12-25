@@ -24,7 +24,6 @@ const Index = () => {
 		_id: '',
 		title: '',
 		thumbnail: '',
-		description: '',
 		price: {
 			cost: {
 				min: 0,
@@ -414,19 +413,6 @@ const Index = () => {
 						<DraftEditor
 							data={product.competitorLinks}
 							setData={handleChangeCompetitorLinks}
-						/>
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="description"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Product description
-						</label>
-						<DraftEditor
-							data={product.description}
-							setData={handleChangeDescription}
 						/>
 					</div>
 

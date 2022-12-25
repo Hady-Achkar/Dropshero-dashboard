@@ -32,7 +32,6 @@ export interface AmazonProduct {
 	thumbnail: string
 	competitorLinks: string
 	category: string
-	description: string
 	revenue: number
 	createdAt?: Date
 	updatedAt?: Date
