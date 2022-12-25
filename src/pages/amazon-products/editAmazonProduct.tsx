@@ -46,6 +46,8 @@ const Index = () => {
 		updatedAt: new Date(),
 	}
 	const [product, setProduct] = useState<AmazonProduct>(initState)
+
+	console.log(product.supplierLinks)
 	const [loading, setLoading] = useState<boolean>(false)
 	const [error, setError] = useState<string>('')
 	const [errorShow, setErrorShow] = useState<boolean>(false)
@@ -67,6 +69,7 @@ const Index = () => {
 	}, [amazonProductId])
 	useEffect(() => {
 		if (!amazonProductId) {
+			console.log('id was not found')
 			history.push('/404')
 		} else {
 			fetchProduct()
