@@ -6,6 +6,8 @@ type Payload = {
 	name?: string
 	category?: string
 	link?: string
+	type?: string
+	description?: string
 }
 
 export const editStore = (

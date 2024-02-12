@@ -50,11 +50,6 @@ const categories = [
 		current: false,
 	},
 	{
-		value: 'tested',
-		label: 'Tested Products',
-		current: false,
-	},
-	{
 		value: 'trend',
 		label: 'Trend',
 		current: false,

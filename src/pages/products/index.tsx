@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {GetAllProducts, getAllProducts} from '../../services'
 import {useFetch} from '../../hooks'
 import {Wrapper} from '../../components'
@@ -13,8 +13,15 @@ const Index = () => {
 		fetchData()
 		return () => fetchData()
 	}, [fetchData])
+	const history = useHistory()
 	return (
 		<Wrapper full loading={loading}>
+			<button
+				onClick={() => history.push('/add-product')}
+				className="bg-indigo-600 px-3 py-1.5 rounded-lg text-white mb-4 hover:bg-indigo-500"
+			>
+				Add product
+			</button>
 			<div className="flex flex-col">
 				<div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -36,28 +43,11 @@ const Index = () => {
 										</th>
 										<th
 											scope="col"
-											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+											className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
 										>
 											Type
 										</th>
-										<th
-											scope="col"
-											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-										>
-											Selling Price
-										</th>
-										<th
-											scope="col"
-											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-										>
-											Cost Price
-										</th>
-										<th
-											scope="col"
-											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-										>
-											Profit
-										</th>
+
 										<th
 											scope="col"
 											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -82,7 +72,7 @@ const Index = () => {
 													{ToUpperFirst(item?.category)}
 												</div>
 											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-center">
+											<td className="px-6 py-4 whitespace-nowrap flex justify-center">
 												<div className="text-sm text-gray-500">
 													{item.isHot ? (
 														<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -95,18 +85,7 @@ const Index = () => {
 													)}
 												</div>
 											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.selling.min.toFixed(2)}$ -{' '}
-												{item?.price?.selling.max.toFixed(2)}$
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.cost.min.toFixed(2)}$ -{' '}
-												{item?.price?.cost.max.toFixed(2)}$
-											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-												{item?.price?.selling.min.toFixed(2)}$ -{' '}
-												{item?.price?.selling.max.toFixed(2)}$
-											</td>
+
 											<td className="px-6 py-4 whitespace-nowrap">
 												<div className="text-sm text-gray-900">
 													{moment(item?.createdAt).format('DD/MM/YY hh:mm')}
