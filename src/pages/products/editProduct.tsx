@@ -33,14 +33,7 @@ const Index = () => {
 				max: 0,
 			},
 		},
-		marketingVideo: [],
 		category: Categories[0].value,
-		marketingAngel: [],
-		competitorLinks: '',
-		advertisementText: '',
-		targets: '',
-		supplierLinks: [],
-		whereToSell: [],
 		isHot: false,
 		createdAt: new Date(),
 		updatedAt: new Date(),
@@ -88,30 +81,10 @@ const Index = () => {
 		[setProduct]
 	)
 
-	const [supplier, setSupplier] = useState<string>('')
-	const [video, setVideo] = useState<string>('')
-	const [angle, setAngle] = useState<string>('')
-
 	const handleDeleteThumbnail = () => {
 		setProduct((prevState) => ({
 			...prevState,
 			thumbnail: '',
-		}))
-	}
-	const handleAddVideo = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
-			setProduct((prevState) => ({
-				...prevState,
-				marketingVideo: [...prevState.marketingVideo, video],
-			}))
-			setVideo('')
-		}
-	}
-
-	const handleDeleteVideo = (video: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			marketingVideo: prevState.marketingVideo.filter((item) => item !== video),
 		}))
 	}
 
@@ -126,43 +99,6 @@ const Index = () => {
 					[e.target.id]: e.target.value,
 				},
 			},
-		}))
-	}
-
-	const handleChangeSellings = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.checked) {
-			setProduct((prevState) => ({
-				...prevState,
-				//@ts-ignore
-				[e.target.name]: [...prevState[e.target.name], e.target.value],
-			}))
-		} else {
-			setProduct((prevState) => ({
-				...prevState,
-				//@ts-ignore
-				[e.target.name]: prevState[e.target.name].filter(
-					(item: string) => item !== e.target.value
-				),
-			}))
-		}
-	}
-
-	const handleAddSupplier = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
-			setProduct((prevState) => ({
-				...prevState,
-				supplierLinks: [...prevState.supplierLinks, supplier],
-			}))
-			setSupplier('')
-		}
-	}
-
-	const handleDeleteSupplier = (supplier: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			supplierLinks: prevState.supplierLinks.filter(
-				(item) => item !== supplier
-			),
 		}))
 	}
 
@@ -191,19 +127,6 @@ const Index = () => {
 		}))
 	}
 
-	const handleChangeAdvertisementText = (content: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			advertisementText: content,
-		}))
-	}
-
-	const handleChangeCompetitorLinks = (content: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			competitorLinks: content,
-		}))
-	}
 	const handleChangeImage = (filePath: string, name: string) => {
 		setProduct((prevState) => ({
 			...prevState,
@@ -215,32 +138,6 @@ const Index = () => {
 		setProduct((prevState) => ({
 			...prevState,
 			isHot: e.target.checked,
-		}))
-	}
-
-	const handleChangeTargets = (content: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			targets: content,
-		}))
-	}
-
-	const handleAddAngle = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
-			setProduct((prevState) => ({
-				...prevState,
-				marketingAngel: [...prevState.marketingAngel, angle],
-			}))
-			setAngle('')
-		}
-	}
-
-	const handleDeleteAngle = (element: string) => {
-		setProduct((prevState) => ({
-			...prevState,
-			marketingAngel: prevState.marketingAngel.filter(
-				(item) => item !== element
-			),
 		}))
 	}
 
@@ -311,120 +208,6 @@ const Index = () => {
 								</svg>
 							</div>
 						)}
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="marketingAngel"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Marketing Angel <span className="text-gray-400">(Multiple)</span>
-						</label>
-						<input
-							type="text"
-							value={angle}
-							onChange={(e) => setAngle(e.target.value)}
-							onKeyPress={handleAddAngle}
-							id="marketingAngel"
-							className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
-						/>
-						<div className="flow-root mt-6  shadow-sm">
-							<ul className="-my-5 pt-4">
-								{product.marketingAngel.map((item, index) => (
-									<li key={index} className="pb-1">
-										<div className="flex items-center space-x-4 px-2 py-3 bg-slate-50">
-											<div className="flex-1 min-w-0">
-												<p className="text-sm font-medium text-gray-900 truncate">
-													{item}
-												</p>
-											</div>
-											<div>
-												<button
-													onClick={() => handleDeleteAngle(item)}
-													className="inline-flex items-center shadow-sm px-2.5 py-0.5 border text-sm leading-5 font-medium rounded-full text-red-700 bg-red-50 hover:bg-red-100"
-												>
-													Delete
-												</button>
-											</div>
-										</div>
-									</li>
-								))}
-							</ul>
-						</div>
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="marketingVideo"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Marketing Videos <span className="text-gray-400">(Multiple)</span>
-						</label>
-						<input
-							type="text"
-							value={video}
-							onChange={(e) => setVideo(e.target.value)}
-							onKeyPress={handleAddVideo}
-							id="marketingVideo"
-							className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
-						/>
-						<div className="space-y-2 grid grid-cols-3 gap-3">
-							{product?.marketingVideo.length > 0 &&
-								product?.marketingVideo.map((url, index) => {
-									return (
-										<div key={index} className="bg-slate-100 px-2">
-											<span
-												className="text-sm text-red-700 cursor-pointer hover:text-red-800"
-												onClick={() => handleDeleteVideo(url)}
-											>
-												x
-											</span>
-											<ReactPlayer height="200" width="100%" url={url} />
-										</div>
-									)
-								})}
-						</div>
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="supplierLinks"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Suppliers Links <span className="text-gray-400">(Multiple)</span>
-						</label>
-						<input
-							type="text"
-							value={supplier}
-							onChange={(e) => setSupplier(e.target.value)}
-							onKeyPress={handleAddSupplier}
-							id="supplierLinks"
-							className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
-						/>
-
-						<div className="flow-root mt-6  shadow-sm">
-							<ul className="-my-5 pt-4">
-								{product.supplierLinks.map((item, index) => (
-									<li key={index} className="pb-1">
-										<div className="flex items-center space-x-4 px-2 py-3 bg-slate-50">
-											<div className="flex-1 min-w-0">
-												<p className="text-sm font-medium text-gray-900 truncate">
-													{item}
-												</p>
-											</div>
-											<div>
-												<button
-													onClick={() => handleDeleteSupplier(item)}
-													className="inline-flex items-center shadow-sm px-2.5 py-0.5 border text-sm leading-5 font-medium rounded-full text-red-700 bg-red-50 hover:bg-red-100"
-												>
-													Delete
-												</button>
-											</div>
-										</div>
-									</li>
-								))}
-							</ul>
-						</div>
 					</div>
 
 					<div className="space-y-2 grid grid-cols-2">
@@ -549,65 +332,6 @@ const Index = () => {
 					</div>
 
 					<div className="space-y-2">
-						<legend className="text-base font-medium text-gray-900">
-							Product Marketing Platforms
-						</legend>
-						<fieldset className="grid grid-cols-3 gap-3">
-							{Socials.map((item, index) => {
-								return (
-									<div key={index} className="relative flex items-start">
-										<div className="flex items-center h-5">
-											<input
-												value={item.name}
-												type="checkbox"
-												id={item.name}
-												checked={Boolean(
-													product.whereToSell.find(
-														(element) => element === item.name
-													)
-												)}
-												name="whereToSell"
-												onChange={handleChangeSellings}
-												className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded"
-											/>
-										</div>
-										<div className="ml-3 text-sm">
-											<span id="comments-description" className="text-gray-500">
-												<span className="sr-only">{item.name} </span>{' '}
-												<img
-													className="inline-flex"
-													height="24"
-													width="24"
-													src={item.src}
-													alt="icon"
-												/>
-											</span>
-											<label
-												htmlFor={item.name}
-												className="font-medium text-gray-700 ml-2"
-											>
-												{item.name}
-											</label>
-										</div>
-									</div>
-								)
-							})}
-						</fieldset>
-					</div>
-					<div className="space-y-2">
-						<label
-							htmlFor="competitorLinks"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Competitors Study
-						</label>
-						<DraftEditor
-							data={product.competitorLinks}
-							setData={handleChangeCompetitorLinks}
-						/>
-					</div>
-
-					<div className="space-y-2">
 						<label
 							htmlFor="description"
 							className="block text-sm font-medium text-gray-700"
@@ -618,29 +342,6 @@ const Index = () => {
 							data={product.description}
 							setData={handleChangeDescription}
 						/>
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="advertisementText"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Ads. Text
-						</label>
-						<DraftEditor
-							data={product.advertisementText}
-							setData={handleChangeAdvertisementText}
-						/>
-					</div>
-
-					<div className="space-y-2">
-						<label
-							htmlFor="targets"
-							className="block text-sm font-medium text-gray-700"
-						>
-							Target Audience
-						</label>
-						<DraftEditor data={product.targets} setData={handleChangeTargets} />
 					</div>
 
 					<div className="grid grid-cols-2 gap-x-4 max-w-lg mx-auto">

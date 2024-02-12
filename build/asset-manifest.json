@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.829b1312.css",
-    "main.js": "/static/js/main.bd3c0e92.js",
+    "main.css": "/static/css/main.9cf903e9.css",
+    "main.js": "/static/js/main.0e74666e.js",
     "static/media/logo.png": "/static/media/logo.06ce424e5b56415ae8ad.png",
     "static/media/facebook.png": "/static/media/facebook.4ae1fe6fcf276ab30f01.png",
     "static/media/american-express-svgrepo-com.svg": "/static/media/american-express-svgrepo-com.f094ecf9a252fe0c243b9de2fdbdcd49.svg",
     "static/media/master.svg": "/static/media/master.b39bbc2de112a4f90763bd31355d5d1a.svg",
     "index.html": "/index.html",
-    "main.829b1312.css.map": "/static/css/main.829b1312.css.map",
-    "main.bd3c0e92.js.map": "/static/js/main.bd3c0e92.js.map"
+    "main.9cf903e9.css.map": "/static/css/main.9cf903e9.css.map",
+    "main.0e74666e.js.map": "/static/js/main.0e74666e.js.map"
   },
   "entrypoints": [
-    "static/css/main.829b1312.css",
-    "static/js/main.bd3c0e92.js"
+    "static/css/main.9cf903e9.css",
+    "static/js/main.0e74666e.js"
   ]
 }

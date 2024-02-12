@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import classNames from 'classnames'
-import {ErrorToast, SuccessToast} from '../../components'
+import {DraftEditor, ErrorToast, SuccessToast} from '../../components'
 import {addStore, GetStores} from '../../services'
 import {useHistory} from 'react-router-dom'
 import {Categories} from '../../data'
@@ -28,6 +28,7 @@ const AddStore = () => {
 		name: '',
 		category: '',
 		link: '',
+		description: '',
 		type: 'amazon',
 	}
 
@@ -39,8 +40,18 @@ const AddStore = () => {
 		setStoreData({...storeData, [e.target.id]: e.target.value})
 	}
 
+	const handleChangeDescription = (content: string) => {
+		setStoreData((prevState) => ({
+			...prevState,
+			description: content,
+		}))
+	}
+
 	const isDisabled =
-		storeData.name === '' || storeData.category === '' || storeData.link === ''
+		storeData.name === '' ||
+		storeData.category === '' ||
+		storeData.link === '' ||
+		storeData.description === ''
 
 	return (
 		<div className=" sm:px-6 lg:px-0 lg:col-span-9">
@@ -118,20 +129,36 @@ const AddStore = () => {
 									})}
 								</select>
 							</div>
+							<div className="col-span-2">
+								<label
+									htmlFor="link"
+									className="block text-sm font-medium text-gray-700"
+								>
+									Link
+								</label>
+								<div>
+									<input
+										onChange={handleChange}
+										id="link"
+										placeholder="https://www.amazon.com"
+										className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+									/>
+								</div>
+							</div>
 						</div>
+
 						<div className="col-span-2 mt-5">
 							<label
-								htmlFor="link"
+								htmlFor="description"
 								className="block text-sm font-medium text-gray-700"
 							>
-								Link
+								Description
 							</label>
+
 							<div className="mt-1">
-								<input
-									onChange={handleChange}
-									id="link"
-									placeholder="https://www.amazon.com"
-									className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm px-3 py-2 border border-gray-300 rounded-md"
+								<DraftEditor
+									data={storeData.description}
+									setData={handleChangeDescription}
 								/>
 							</div>
 						</div>
@@ -155,6 +182,7 @@ const AddStore = () => {
 										: 'bg-indigo-600  hover:bg-indigo-700 cursor-pointer',
 									'border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 '
 								)}
+								disabled={isDisabled}
 							>
 								Save
 							</button>
