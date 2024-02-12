@@ -164,21 +164,53 @@ const Index = () => {
 						className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
 					/>
 				</div>
-
 				<div className="space-y-2">
-					<label
-						htmlFor="thumbnail"
-						className="block text-sm font-medium text-gray-700"
-					>
-						Product Image
+					<label className="block text-sm font-medium text-gray-700">
+						Main Image
 					</label>
-					<input
-						type="text"
-						value={product.thumbnail}
-						onChange={handleChange}
-						id="thumbnail"
-						className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
-					/>
+					{product?.thumbnail === '' && (
+						<Uploader
+							cb={handleChangeImage}
+							accept={'image'}
+							name={'thumbnail'}
+						/>
+					)}
+					{product?.thumbnail !== '' && (
+						<div
+							style={{
+								position: 'relative',
+							}}
+						>
+							<img
+								src={product?.thumbnail}
+								style={{
+									width: '250',
+									borderRadius: '4px',
+								}}
+								alt={`Drops-hero ${product?.thumbnail}`}
+							/>
+							<svg
+								style={{
+									position: 'absolute',
+									right: 10,
+									top: 10,
+								}}
+								onClick={handleDeleteThumbnail}
+								xmlns="http://www.w3.org/2000/svg"
+								className="h-6 w-6 cursor-pointer"
+								fill="#fff"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+					)}
 				</div>
 
 				<div className="space-y-2 grid grid-cols-2">
@@ -217,7 +249,7 @@ const Index = () => {
 						<div className="mr-3 text-sm">
 							<label htmlFor="isHot" className="font-medium text-gray-700">
 								<FireIcon className="h-5 w-5 text-red-500 inline-flex items-center" />
-								Hot product{' '}
+								Seasonal product{' '}
 							</label>
 						</div>
 						<div className="flex items-center h-5">

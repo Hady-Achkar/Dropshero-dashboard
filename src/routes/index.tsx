@@ -66,7 +66,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		component: ProductsPage,
 		full: false,
 		tabIndex: 2,
-		title: 'All products',
+		title: 'Products',
 	},
 	{
 		path: '/product/:productId',

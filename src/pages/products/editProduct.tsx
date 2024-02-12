@@ -244,7 +244,7 @@ const Index = () => {
 							<div className="mr-3 text-sm">
 								<label htmlFor="isHot" className="font-medium text-gray-700">
 									<FireIcon className="h-5 w-5 text-red-500 inline-flex items-center" />
-									Hot product{' '}
+									Seasonal product{' '}
 								</label>
 							</div>
 							<div className="flex items-center h-5">
@@ -355,7 +355,7 @@ const Index = () => {
 							className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
 							onClick={handleSubmit}
 						>
-							Edit product
+							Save edits
 						</button>
 					</div>
 				</div>

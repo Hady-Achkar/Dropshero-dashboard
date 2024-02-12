@@ -35,33 +35,34 @@ const Sidebar: React.FC<IProps> = (props) => {
 	const initNavigation = useMemo(() => {
 		return [
 			{name: 'Dashboard', to: '/', icon: HomeIcon, current: true},
-			{name: 'Users', to: '/users', icon: UsersIcon, current: false},
 			{name: 'Products', to: '/products', icon: CubeIcon, current: false},
-			{name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false},
-			{
-				name: 'Influencers',
-				to: '/influencers',
-				icon: StarIcon,
-				current: false,
-			},
 			{
 				name: 'Stores',
 				to: '/stores',
 				icon: HomeIcon,
 				current: false,
 			},
+			{name: 'Users', to: '/users', icon: UsersIcon, current: false},
+			// {name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false},
+			// {
+			// 	name: 'Influencers',
+			// 	to: '/influencers',
+			// 	icon: StarIcon,
+			// 	current: false,
+			// },
+
 			{
 				name: 'Add Subscriber',
 				to: '/add-user',
 				icon: UserAddIcon,
 				current: false,
 			},
-			{
-				name: 'Amazon Products',
-				to: '/amazon-products',
-				icon: CubeIcon,
-				current: false,
-			},
+			// {
+			// 	name: 'Amazon Products',
+			// 	to: '/amazon-products',
+			// 	icon: CubeIcon,
+			// 	current: false,
+			// },
 		]
 	}, [])
 	const [navigation, setNavigation] =
