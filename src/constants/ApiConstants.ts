@@ -1,16 +1,16 @@
 const ApiConstants = {
 	AUTH: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 		SIGNUP: '/sign-up',
 		SIGN_IN: '/sign-in',
 	},
 	UTILS: {
-		BASE_URL: 'http://localhost:4000/utils',
+		BASE_URL: 'https://api.easyecommerce.io/utils',
 		UPLOAD_FILE: '/upload',
 		ADD_CONTACT: '/contact',
 	},
 	PRODUCTS: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 		GET_ALL_PRODUCTS: '/products',
 		ADD_NEW_PRODUCT: '/product',
 		GET_SINGLE: '/product',
@@ -18,7 +18,7 @@ const ApiConstants = {
 		ARCHIVE_PRODUCT: '/product/archive',
 	},
 	AMAZON_PRODUCTS: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 		GET_ALL_PRODUCTS: '/amazon-products',
 		ADD_NEW_PRODUCT: '/amazon-product',
 		GET_SINGLE: '/amazon-product',
@@ -26,12 +26,12 @@ const ApiConstants = {
 		ARCHIVE_PRODUCT: '/amazon-product/archive',
 	},
 	BUNDLES: {
-		BASE_URL: 'http://localhost:4000/bundles',
+		BASE_URL: 'https://api.easyecommerce.io/bundles',
 		GET_ALL_BUNDLES: '/',
 		GET_SINGLE_BUNDLE: '/bundle',
 	},
 	USERS: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 		ADD_NEW_USER_FROM_EXCEL: '/excel',
 		GET_ALL: '/users',
 		GET_SINGLE: '/user',
@@ -40,10 +40,10 @@ const ApiConstants = {
 		ADD_NEW_USER: '/user',
 	},
 	USERS_FROM_EXCEL: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 	},
 	ADMIN: {
-		BASE_URL: 'http://localhost:4000/admin',
+		BASE_URL: 'https://api.easyecommerce.io/admin',
 		GET_MY_PROFILE: '/profile',
 		EDIT_MY_PROFILE: '/profile',
 		GET_ALL_ADMINS: '/',
