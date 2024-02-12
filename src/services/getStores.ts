@@ -12,6 +12,7 @@ export declare namespace GetStores {
 		_id?: string
 		name: string
 		category: string
+		description: string
 		link: string
 		type: string
 		createdAt?: Date
