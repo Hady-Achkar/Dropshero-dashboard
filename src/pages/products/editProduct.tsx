@@ -1,9 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {DraftEditor, ErrorToast, Uploader, Wrapper} from '../../components'
-import {Socials} from '../../constants'
 import {IProduct} from '../../types'
 import {Categories} from '../../data'
-import ReactPlayer from 'react-player'
 import {editProduct, getSingleProduct} from '../../services'
 import {useHistory, useParams} from 'react-router-dom'
 import {ToUpperFirst} from '../../utils'
@@ -94,7 +92,7 @@ const Index = () => {
 			price: {
 				...prevState.price,
 				[e.target.name]: {
-					//@ts-ignore
+					// @ts-ignore
 					...prevState.price[e.target.name],
 					[e.target.id]: e.target.value,
 				},
@@ -102,7 +100,7 @@ const Index = () => {
 		}))
 	}
 
-	const handleSubmit = useCallback(() => {
+	const handleSubmit = () => {
 		setLoading(true)
 		editProduct(product)
 			.then((res) => {
@@ -114,12 +112,12 @@ const Index = () => {
 					const message = ToUpperFirst(err.response.data.errors[0].name)
 					if (message) setError(message)
 					setErrorShow(true)
-					setLoading(false)
 				} else {
 					console.log(err)
 				}
 			})
-	}, [history, product])
+			.finally(() => setLoading(false))
+	}
 	const handleChangeDescription = (content: string) => {
 		setProduct((prevState) => ({
 			...prevState,
@@ -141,6 +139,7 @@ const Index = () => {
 		}))
 	}
 
+	console.log(product)
 	return (
 		<Wrapper full={true} loading={loading}>
 			<div className="">

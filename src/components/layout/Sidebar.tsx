@@ -43,13 +43,6 @@ const Sidebar: React.FC<IProps> = (props) => {
 				current: false,
 			},
 			{name: 'Users', to: '/users', icon: UsersIcon, current: false},
-			// {name: 'Add Product', to: '/add-product', icon: PlusIcon, current: false},
-			// {
-			// 	name: 'Influencers',
-			// 	to: '/influencers',
-			// 	icon: StarIcon,
-			// 	current: false,
-			// },
 
 			{
 				name: 'Add Subscriber',
@@ -57,12 +50,6 @@ const Sidebar: React.FC<IProps> = (props) => {
 				icon: UserAddIcon,
 				current: false,
 			},
-			// {
-			// 	name: 'Amazon Products',
-			// 	to: '/amazon-products',
-			// 	icon: CubeIcon,
-			// 	current: false,
-			// },
 		]
 	}, [])
 	const [navigation, setNavigation] =
@@ -207,8 +194,8 @@ const Sidebar: React.FC<IProps> = (props) => {
 					{/* Sidebar component, swap this element with another sidebar if you like */}
 					<div className="flex-1 flex flex-col min-h-0 bg-gray-800">
 						<div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-							<div className="flex font-bold text-white text-2xl  items-center flex-shrink-0 px-4 ">
-								EasyEcommerce.io
+							<div className="flex font-bold text-white text-lg  items-center flex-shrink-0 px-4 ">
+								easyecommerce.io
 							</div>
 							<nav className="mt-5 flex-1 px-2 space-y-1">
 								{navigation.map((item) => (
