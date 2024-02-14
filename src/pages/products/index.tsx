@@ -9,11 +9,16 @@ import moment from 'moment'
 const Index = () => {
 	const {fetchData, data, loading} =
 		useFetch<GetAllProducts.RootObject>(getAllProducts)
+
 	useEffect(() => {
 		fetchData()
 		return () => fetchData()
 	}, [fetchData])
+
 	const history = useHistory()
+
+	const filtered = data?.products.filter((item) => !item.isArchived)
+
 	return (
 		<Wrapper full loading={loading}>
 			<button
@@ -60,7 +65,7 @@ const Index = () => {
 									</tr>
 								</thead>
 								<tbody className="bg-white divide-y divide-gray-200">
-									{data?.products.map((item) => (
+									{filtered?.map((item) => (
 										<tr key={item?._id}>
 											<td className="px-6 py-4 whitespace-nowrap">
 												<div className="text-sm text-gray-900">

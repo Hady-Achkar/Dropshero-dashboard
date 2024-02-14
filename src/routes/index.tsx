@@ -65,7 +65,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		isPrivate: false,
 		component: ProductsPage,
 		full: false,
-		tabIndex: 2,
+		tabIndex: 1,
 		title: 'Products',
 	},
 	{
@@ -101,7 +101,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		isPrivate: false,
 		component: AddAmazonProductPage,
 		full: false,
-		tabIndex: 2,
+		tabIndex: 6,
 		title: 'Add Amazon products',
 	},
 	{
@@ -129,7 +129,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		isPrivate: false,
 		component: UsersPage,
 		full: false,
-		tabIndex: 1,
+		tabIndex: 3,
 		title: 'All users',
 	},
 	{
@@ -201,7 +201,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		isPrivate: false,
 		component: AddNewUser,
 		full: true,
-		tabIndex: 100,
+		tabIndex: 4,
 		title: 'Add user',
 	},
 	{
@@ -255,7 +255,7 @@ const routesConfiguration: IRoutesConfiguration[] = [
 		isPrivate: false,
 		component: StoresPage,
 		full: true,
-		tabIndex: 100,
+		tabIndex: 2,
 		title: 'Stores',
 	},
 ]
